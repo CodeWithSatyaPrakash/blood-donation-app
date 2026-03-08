@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - LifeDrops{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form-header">
+        <h2>Become a Donor</h2>
+        <p style="color: var(--text-light)">Join us in saving lives</p>
+    </div>
+    <form method="POST" action="{{ url_for('register') }}">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label for="first_name">First Name *</label>
+                <input type="text" id="first_name" name="first_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name *</label>
+                <input type="text" id="last_name" name="last_name" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password *</label>
+            <input type="password" id="password" name="password" class="form-control" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label for="blood_group">Blood Group *</label>
+                <select id="blood_group" name="blood_group" class="form-control" required>
+                    <option value="" disabled selected>Select</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="last_donation_date">Last Donation Date</label>
+                <input type="date" id="last_donation_date" name="last_donation_date" class="form-control">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Complete Registration</button>
+    </form>
+    <div class="form-footer">
+        Already registered? <a href="{{ url_for('login') }}">Log in here</a>
+    </div>
+</div>
+{% endblock %}

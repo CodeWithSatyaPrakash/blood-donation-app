@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}LifeDrops - Save a Life Today {% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Donate Blood, Save Lives</h1>
+    <p>Your single donation can save up to three lives. Join our community of lifesavers and make a difference today.</p>
+    {% if not session.get('user_id') %}
+        <a href="{{ url_for('register') }}" class="btn btn-primary" style="font-size: 1.2rem; padding: 0.8rem 2rem;">Register Now</a>
+    {% endif %}
+</section>
+
+<section class="info-section">
+    <div class="info-card">
+        <i class="fa-solid fa-heart-pulse fa-3x" style="color: var(--primary-red); margin-bottom: 1rem;"></i>
+        <h3>Why Donate?</h3>
+        <p>Blood is needed every two seconds. Your donation helps accident victims, surgery patients, and those battling illnesses.</p>
+    </div>
+    <div class="info-card">
+        <i class="fa-solid fa-clock fa-3x" style="color: var(--primary-red); margin-bottom: 1rem;"></i>
+        <h3>Quick & Safe</h3>
+        <p>The entire process takes just about an hour, and the actual donation takes only 8-10 minutes. It's completely safe.</p>
+    </div>
+    <div class="info-card">
+        <i class="fa-solid fa-users fa-3x" style="color: var(--primary-red); margin-bottom: 1rem;"></i>
+        <h3>Join the Community</h3>
+        <p>Become part of a noble cause. Keep track of your donations and know that you are making a tangible impact.</p>
+    </div>
+</section>
+
+<section class="camps-section">
+    <h2>Upcoming Donation Camps</h2>
+    <div class="camps-grid">
+        {% for camp in camps %}
+            <div class="camp-card">
+                <h3><i class="fa-solid fa-tent"></i> {{ camp.camp_name }}</h3>
+                <div class="camp-details">
+                    <span><i class="fa-solid fa-location-dot"></i> {{ camp.location }}</span>
+                    <span><i class="fa-regular fa-calendar-days"></i> {{ camp.date }}</span>
+                </div>
+            </div>
+        {% else %}
+            <p style="text-align: center; grid-column: 1 / -1; color: var(--text-light);">No upcoming camps scheduled currently.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
