@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - LifeDrops{% endblock %}
+
+{% block content %}
+<div class="dashboard-card">
+    <div class="dashboard-header">
+        <h2>Hello, {{ user.first_name }}! <i class="fa-solid fa-hand-holding-hand" style="color: var(--primary-red);"></i></h2>
+        <a href="{{ url_for('home') }}" class="btn btn-outline">View Camps</a>
+    </div>
+
+    <p style="text-align: center; margin-bottom: 2rem; color: var(--text-light);">
+        Thank you for being a part of the LifeDrops donor community. Here are your details:
+    </p>
+
+    <div class="user-stats">
+        <div class="stat-card">
+            <div class="stat-label">Blood Group</div>
+            <div class="stat-value blood-group" id="user-blood-group">{{ user.blood_group }}</div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-label">Last Donation Date</div>
+            <div class="stat-value" id="user-last-donation">
+                {% if user.last_donation_date %}
+                    {{ user.last_donation_date }}
+                {% else %}
+                    <span style="font-size: 1rem; color: var(--text-light);">Never Donated</span>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-label">Account Status</div>
+            <div class="stat-value" style="color: #059669; font-size: 1.25rem;">
+                <i class="fa-solid fa-circle-check"></i> Active Donor
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 2rem; text-align: center; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+        <p style="color: var(--text-light); font-size: 0.9rem;">Keep your information up to date to help us save more lives.</p>
+    </div>
+</div>
+{% endblock %}

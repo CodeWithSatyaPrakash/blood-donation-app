@@ -1,0 +1,17 @@
+# Bye-bye virtual environments
+venv/
+env/
+.env
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# SQLite Database (for Vercel deployment, the DB generated during build will be strictly read-only)
+# Note: For this project, you want to include database.db so the seeded data is uploaded to Vercel.
+# database.db
+
+# Misc
+.DS_Store
+*.zip
